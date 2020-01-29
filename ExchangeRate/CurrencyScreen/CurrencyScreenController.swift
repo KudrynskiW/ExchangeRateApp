@@ -43,12 +43,18 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
         let address = category + separator + table + separator + code + separator +
         fromDate + separator + toDate + separator
         ConnectionManager.shared().downloadSingle(ext: address) { (response, error) in
-            if let error = error {
-                print("Error appear: \(error)")
-            }
             DispatchQueue.main.sync {
-                self.rates = response!.rates
+            if let error = error {
+                self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
                 self.tableView.reloadData()
+                print("Error appear: \(error)")
+                
+            }
+            //DispatchQueue.main.sync {
+                if let response = response {
+                    self.rates = response.rates
+                    self.tableView.reloadData()
+                }
             }
         }
         self.view.subviews.last?.removeFromSuperview()
