@@ -48,9 +48,7 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
                 self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
                 self.tableView.reloadData()
                 print("Error appear: \(error)")
-                
             }
-            //DispatchQueue.main.sync {
                 if let response = response {
                     self.rates = response.rates
                     self.tableView.reloadData()
