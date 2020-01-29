@@ -10,14 +10,50 @@
         <!--Home Screen-->
         <scene sceneID="zZT-dM-z0h">
             <objects>
-                <viewController title="Home Screen" id="rMV-ek-GYE" sceneMemberID="viewController">
+                <viewController title="Home Screen" id="rMV-ek-GYE" customClass="HomeScreenController" customModule="ExchangeRate" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QVS-fM-fXJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ESu-CB-Po3">
+                                <rect key="frame" x="20" y="98" width="374" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                    <segment title=""/>
+                                </segments>
+                                <connections>
+                                    <action selector="tableSelected:" destination="rMV-ek-GYE" eventType="valueChanged" id="WbA-XG-4q6"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-yP-AHT">
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="rMV-ek-GYE" id="WRm-Vn-q1y"/>
+                                    <outlet property="delegate" destination="rMV-ek-GYE" id="dNv-s7-3Ok"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sOw-yP-AHT" firstAttribute="top" secondItem="ESu-CB-Po3" secondAttribute="bottom" constant="10" id="0IQ-QO-TEt"/>
+                            <constraint firstItem="CCL-Of-RtQ" firstAttribute="trailing" secondItem="sOw-yP-AHT" secondAttribute="trailing" id="8ma-Np-Vyx"/>
+                            <constraint firstItem="ESu-CB-Po3" firstAttribute="top" secondItem="CCL-Of-RtQ" secondAttribute="top" constant="10" id="B3N-cF-FzR"/>
+                            <constraint firstItem="CCL-Of-RtQ" firstAttribute="trailing" secondItem="ESu-CB-Po3" secondAttribute="trailing" constant="20" id="BI1-WZ-5Cb"/>
+                            <constraint firstItem="ESu-CB-Po3" firstAttribute="leading" secondItem="CCL-Of-RtQ" secondAttribute="leading" constant="20" id="pBO-7L-vEf"/>
+                            <constraint firstItem="sOw-yP-AHT" firstAttribute="leading" secondItem="CCL-Of-RtQ" secondAttribute="leading" id="ypR-w8-CTo"/>
+                            <constraint firstItem="CCL-Of-RtQ" firstAttribute="bottom" secondItem="sOw-yP-AHT" secondAttribute="bottom" id="zeJ-zY-6KW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="CCL-Of-RtQ"/>
                     </view>
                     <navigationItem key="navigationItem" id="ykK-UT-heY"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="ESu-CB-Po3" id="68M-FD-XwI"/>
+                        <outlet property="tableView" destination="sOw-yP-AHT" id="T0X-RH-u7M"/>
+                        <outlet property="view" destination="QVS-fM-fXJ" id="1SE-Jm-3q2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNQ-RY-y8Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

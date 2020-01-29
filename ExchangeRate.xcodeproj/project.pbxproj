@@ -9,25 +9,31 @@
 /* Begin PBXBuildFile section */
 		8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949836923E1DFCA00D350C4 /* AppDelegate.swift */; };
 		8949836C23E1DFCA00D350C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949836B23E1DFCA00D350C4 /* SceneDelegate.swift */; };
-		8949836E23E1DFCA00D350C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949836D23E1DFCA00D350C4 /* ViewController.swift */; };
-		8949837123E1DFCA00D350C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8949836F23E1DFCA00D350C4 /* Main.storyboard */; };
 		8949837323E1DFCD00D350C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8949837223E1DFCD00D350C4 /* Assets.xcassets */; };
 		8949837623E1DFCD00D350C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8949837423E1DFCD00D350C4 /* LaunchScreen.storyboard */; };
 		8949838023E1E04E00D350C4 /* CurrencyScreenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */; };
 		8949838223E1E05800D350C4 /* HomeScreenView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8949838123E1E05800D350C4 /* HomeScreenView.storyboard */; };
+		8949838423E1E22B00D350C4 /* HomeScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838323E1E22B00D350C4 /* HomeScreenController.swift */; };
+		8949838723E1E52D00D350C4 /* CurrencyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8949838623E1E52D00D350C4 /* CurrencyCell.xib */; };
+		8949838923E1E54700D350C4 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838823E1E54700D350C4 /* CurrencyCell.swift */; };
+		8949838C23E1EA8D00D350C4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838B23E1EA8D00D350C4 /* Response.swift */; };
+		8949838E23E1ECC500D350C4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838D23E1ECC500D350C4 /* Currency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8949836623E1DFCA00D350C4 /* ExchangeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8949836923E1DFCA00D350C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8949836B23E1DFCA00D350C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8949836D23E1DFCA00D350C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8949837023E1DFCA00D350C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8949837223E1DFCD00D350C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8949837523E1DFCD00D350C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8949837723E1DFCD00D350C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrencyScreenView.storyboard; sourceTree = "<group>"; };
 		8949838123E1E05800D350C4 /* HomeScreenView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreenView.storyboard; sourceTree = "<group>"; };
+		8949838323E1E22B00D350C4 /* HomeScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenController.swift; sourceTree = "<group>"; };
+		8949838623E1E52D00D350C4 /* CurrencyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCell.xib; sourceTree = "<group>"; };
+		8949838823E1E54700D350C4 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		8949838B23E1EA8D00D350C4 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		8949838D23E1ECC500D350C4 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +66,11 @@
 		8949836823E1DFCA00D350C4 /* ExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
+				8949838A23E1EA7800D350C4 /* Models */,
 				8949837E23E1E02700D350C4 /* CurrencyScreen */,
 				8949837D23E1E02000D350C4 /* HomeScreen */,
 				8949836923E1DFCA00D350C4 /* AppDelegate.swift */,
 				8949836B23E1DFCA00D350C4 /* SceneDelegate.swift */,
-				8949836D23E1DFCA00D350C4 /* ViewController.swift */,
-				8949836F23E1DFCA00D350C4 /* Main.storyboard */,
 				8949837223E1DFCD00D350C4 /* Assets.xcassets */,
 				8949837423E1DFCD00D350C4 /* LaunchScreen.storyboard */,
 				8949837723E1DFCD00D350C4 /* Info.plist */,
@@ -76,7 +81,9 @@
 		8949837D23E1E02000D350C4 /* HomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8949838523E1E51B00D350C4 /* CustomCells */,
 				8949838123E1E05800D350C4 /* HomeScreenView.storyboard */,
+				8949838323E1E22B00D350C4 /* HomeScreenController.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -87,6 +94,24 @@
 				8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */,
 			);
 			path = CurrencyScreen;
+			sourceTree = "<group>";
+		};
+		8949838523E1E51B00D350C4 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				8949838623E1E52D00D350C4 /* CurrencyCell.xib */,
+				8949838823E1E54700D350C4 /* CurrencyCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
+		8949838A23E1EA7800D350C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8949838B23E1EA8D00D350C4 /* Response.swift */,
+				8949838D23E1ECC500D350C4 /* Currency.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,10 +173,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8949837623E1DFCD00D350C4 /* LaunchScreen.storyboard in Resources */,
+				8949838723E1E52D00D350C4 /* CurrencyCell.xib in Resources */,
 				8949837323E1DFCD00D350C4 /* Assets.xcassets in Resources */,
 				8949838223E1E05800D350C4 /* HomeScreenView.storyboard in Resources */,
 				8949838023E1E04E00D350C4 /* CurrencyScreenView.storyboard in Resources */,
-				8949837123E1DFCA00D350C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,23 +187,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8949836E23E1DFCA00D350C4 /* ViewController.swift in Sources */,
+				8949838E23E1ECC500D350C4 /* Currency.swift in Sources */,
+				8949838923E1E54700D350C4 /* CurrencyCell.swift in Sources */,
+				8949838C23E1EA8D00D350C4 /* Response.swift in Sources */,
 				8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */,
 				8949836C23E1DFCA00D350C4 /* SceneDelegate.swift in Sources */,
+				8949838423E1E22B00D350C4 /* HomeScreenController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8949836F23E1DFCA00D350C4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8949837023E1DFCA00D350C4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8949837423E1DFCD00D350C4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
