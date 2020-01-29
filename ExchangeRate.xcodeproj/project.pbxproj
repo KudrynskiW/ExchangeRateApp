@@ -18,6 +18,8 @@
 		8949838923E1E54700D350C4 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838823E1E54700D350C4 /* CurrencyCell.swift */; };
 		8949838C23E1EA8D00D350C4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838B23E1EA8D00D350C4 /* Response.swift */; };
 		8949838E23E1ECC500D350C4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838D23E1ECC500D350C4 /* Currency.swift */; };
+		8949839023E1FCDB00D350C4 /* CurrencyScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */; };
+		8949839323E1FDEE00D350C4 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949839223E1FDEE00D350C4 /* ConnectionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		8949838823E1E54700D350C4 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		8949838B23E1EA8D00D350C4 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		8949838D23E1ECC500D350C4 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyScreenController.swift; sourceTree = "<group>"; };
+		8949839223E1FDEE00D350C4 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		8949836823E1DFCA00D350C4 /* ExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
+				8949839123E1FDDE00D350C4 /* Managers */,
 				8949838A23E1EA7800D350C4 /* Models */,
 				8949837E23E1E02700D350C4 /* CurrencyScreen */,
 				8949837D23E1E02000D350C4 /* HomeScreen */,
@@ -92,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */,
+				8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */,
 			);
 			path = CurrencyScreen;
 			sourceTree = "<group>";
@@ -112,6 +118,14 @@
 				8949838D23E1ECC500D350C4 /* Currency.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8949839123E1FDDE00D350C4 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8949839223E1FDEE00D350C4 /* ConnectionManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,7 +204,9 @@
 				8949838E23E1ECC500D350C4 /* Currency.swift in Sources */,
 				8949838923E1E54700D350C4 /* CurrencyCell.swift in Sources */,
 				8949838C23E1EA8D00D350C4 /* Response.swift in Sources */,
+				8949839023E1FCDB00D350C4 /* CurrencyScreenController.swift in Sources */,
 				8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */,
+				8949839323E1FDEE00D350C4 /* ConnectionManager.swift in Sources */,
 				8949836C23E1DFCA00D350C4 /* SceneDelegate.swift in Sources */,
 				8949838423E1E22B00D350C4 /* HomeScreenController.swift in Sources */,
 			);

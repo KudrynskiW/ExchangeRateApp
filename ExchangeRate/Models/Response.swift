@@ -1,5 +1,5 @@
 //
-//  Currency.swift
+//  Response.swift
 //  ExchangeRate
 //
 //  Created by Wojciech Kudrynski on 29/01/2020.
@@ -8,12 +8,11 @@
 
 import Foundation
 
-struct Currency: Decodable {
-    var no: String? = ""
-    var currency: String?
+struct Response: Decodable {
+    var table: String
+    var no: String?
     var code: String?
-    var bid: Double?
-    var ask: Double?
-    var mid: Double?
+    var tradingDate: String?
     var effectiveDate: String?
+    var rates: [Currency]
 }

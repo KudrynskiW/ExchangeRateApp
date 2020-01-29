@@ -27,7 +27,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sOw-yP-AHT">
-                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -44,7 +44,7 @@
                             <constraint firstItem="CCL-Of-RtQ" firstAttribute="trailing" secondItem="ESu-CB-Po3" secondAttribute="trailing" constant="20" id="BI1-WZ-5Cb"/>
                             <constraint firstItem="ESu-CB-Po3" firstAttribute="leading" secondItem="CCL-Of-RtQ" secondAttribute="leading" constant="20" id="pBO-7L-vEf"/>
                             <constraint firstItem="sOw-yP-AHT" firstAttribute="leading" secondItem="CCL-Of-RtQ" secondAttribute="leading" id="ypR-w8-CTo"/>
-                            <constraint firstItem="CCL-Of-RtQ" firstAttribute="bottom" secondItem="sOw-yP-AHT" secondAttribute="bottom" id="zeJ-zY-6KW"/>
+                            <constraint firstAttribute="bottom" secondItem="sOw-yP-AHT" secondAttribute="bottom" id="zeJ-zY-6KW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CCL-Of-RtQ"/>
                     </view>
