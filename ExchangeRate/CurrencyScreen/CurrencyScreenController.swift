@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CurrencyScreenController: UIViewController {
+class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +20,8 @@ class CurrencyScreenController: UIViewController {
     var toDate: String = ""
     var differenceBetweenDates = 0
     var rates: [Currency] = []
+    var changingFrom = false
+    var today = ""
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
@@ -32,6 +34,10 @@ class CurrencyScreenController: UIViewController {
     }
     
     @objc func fetchData() {
+        let activityView = UIActivityIndicatorView(style: .large)
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
         let separator = "/"
         let category = "rates"
         let address = category + separator + table + separator + code + separator +
@@ -45,8 +51,37 @@ class CurrencyScreenController: UIViewController {
                 self.tableView.reloadData()
             }
         }
+        self.view.subviews.last?.removeFromSuperview()
     }
     
+    @IBAction func fromButtonTapped(_ sender: Any) {
+        let view = DatePickerController.instanceFromNib() as! DatePickerController
+        view.delegate = self
+        view.setup(min: nil, max: toDate)
+        self.view.addSubview(view)
+        changingFrom = true
+    }
+    
+    @IBAction func toButtonTapped(_ sender: Any) {
+        let view = DatePickerController.instanceFromNib() as! DatePickerController
+        view.delegate = self
+        view.setup(min: fromDate, max: nil)
+        self.view.addSubview(view)
+    }
+    
+    func setDate(date: String) {
+        self.view.subviews.last?.removeFromSuperview()
+        if(changingFrom) {
+            changingFrom = false
+            self.fromDate = date
+            self.fromLabel.text = date
+        } else {
+            self.toDate = date
+            self.toLabel.text = date
+        }
+        print(date)
+        fetchData()
+    }
 }
 
 extension CurrencyScreenController: UITableViewDelegate, UITableViewDataSource {

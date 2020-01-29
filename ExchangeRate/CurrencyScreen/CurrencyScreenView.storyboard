@@ -42,6 +42,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfG-bi-voF">
                                 <rect key="frame" x="341" y="119" width="53" height="30"/>
                                 <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="toButtonTapped:" destination="Mqu-9J-67r" eventType="touchUpInside" id="n93-uE-spM"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rOt-nF-lZb">
                                 <rect key="frame" x="0.0" y="159" width="414" height="737"/>
@@ -55,6 +58,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fr-ba-697">
                                 <rect key="frame" x="341" y="79" width="53" height="30"/>
                                 <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="fromButtonTapped:" destination="Mqu-9J-67r" eventType="touchUpInside" id="yiM-TA-tWG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

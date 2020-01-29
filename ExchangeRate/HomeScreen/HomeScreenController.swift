@@ -33,6 +33,10 @@ class HomeScreenController: UIViewController {
     }
     
     @objc func fetchData() {
+        let activityView = UIActivityIndicatorView(style: .large)
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
         let category = "tables/"
         ConnectionManager.shared().download(ext: category + selectedTable) { (response, error) in
             if let error = error {
@@ -46,6 +50,7 @@ class HomeScreenController: UIViewController {
                 })
             }
         }
+        self.view.subviews.last?.removeFromSuperview()
     }
     
     @IBAction func tableSelected(_ sender: Any) {

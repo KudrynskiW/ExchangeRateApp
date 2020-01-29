@@ -20,6 +20,8 @@
 		8949838E23E1ECC500D350C4 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838D23E1ECC500D350C4 /* Currency.swift */; };
 		8949839023E1FCDB00D350C4 /* CurrencyScreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */; };
 		8949839323E1FDEE00D350C4 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949839223E1FDEE00D350C4 /* ConnectionManager.swift */; };
+		8949839823E21A0B00D350C4 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8949839723E21A0B00D350C4 /* DatePickerView.xib */; };
+		8949839A23E21A7A00D350C4 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949839923E21A7A00D350C4 /* DatePickerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		8949838D23E1ECC500D350C4 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyScreenController.swift; sourceTree = "<group>"; };
 		8949839223E1FDEE00D350C4 /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		8949839723E21A0B00D350C4 /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		8949839923E21A7A00D350C4 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 		8949837E23E1E02700D350C4 /* CurrencyScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8949839623E219F400D350C4 /* CustomView */,
 				8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */,
 				8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */,
 			);
@@ -126,6 +131,15 @@
 				8949839223E1FDEE00D350C4 /* ConnectionManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		8949839623E219F400D350C4 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				8949839723E21A0B00D350C4 /* DatePickerView.xib */,
+				8949839923E21A7A00D350C4 /* DatePickerController.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8949839823E21A0B00D350C4 /* DatePickerView.xib in Resources */,
 				8949837623E1DFCD00D350C4 /* LaunchScreen.storyboard in Resources */,
 				8949838723E1E52D00D350C4 /* CurrencyCell.xib in Resources */,
 				8949837323E1DFCD00D350C4 /* Assets.xcassets in Resources */,
@@ -204,6 +219,7 @@
 				8949838E23E1ECC500D350C4 /* Currency.swift in Sources */,
 				8949838923E1E54700D350C4 /* CurrencyCell.swift in Sources */,
 				8949838C23E1EA8D00D350C4 /* Response.swift in Sources */,
+				8949839A23E21A7A00D350C4 /* DatePickerController.swift in Sources */,
 				8949839023E1FCDB00D350C4 /* CurrencyScreenController.swift in Sources */,
 				8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */,
 				8949839323E1FDEE00D350C4 /* ConnectionManager.swift in Sources */,
