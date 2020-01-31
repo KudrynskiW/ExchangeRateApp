@@ -17,6 +17,7 @@ class HomeScreenController: UIViewController {
     var rates: [Currency] = []
     var date: String = ""
     var selectedTable = "A"
+    var activityIndicator: ActivityIndicator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,21 +26,17 @@ class HomeScreenController: UIViewController {
         
         tableView.register(UINib(nibName: "CurrencyCell", bundle: nil), forCellReuseIdentifier: "CurrencyCell")
         tableView.rowHeight = 100
-        
         tableTypes.forEach { key, value in
             segmentedControl.setTitle(value, forSegmentAt: key)
         }
+        
+        activityIndicator = ActivityIndicator(setupFor: self.view)
         fetchData()
     }
     
     @objc func fetchData() {
-        let activityView = UIActivityIndicatorView(style: .large)
-        activityView.center = self.view.center
-        activityView.startAnimating()
-        self.view.addSubview(activityView)
+        activityIndicator!.show()
         let category = "tables/"
-        
-
         ConnectionManager.shared().download(ext: category + selectedTable) { (res: [Response]?, err) in
             DispatchQueue.main.sync {
                 if let err = err {
@@ -50,40 +47,15 @@ class HomeScreenController: UIViewController {
                     self.date = response.effectiveDate!
                     self.tableView.reloadData()
                     })
-                self.view.subviews.last?.removeFromSuperview()
+                self.activityIndicator!.hide()
                 }
             }
         }
         
-    
     @IBAction func tableSelected(_ sender: Any) {
         let selectedIndex = segmentedControl.selectedSegmentIndex
         selectedTable = segmentedControl.titleForSegment(at: selectedIndex)!
         fetchData()
         tableView.reloadData()
     }
-}
-
-extension HomeScreenController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rates.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
-        let currency = rates[indexPath.row]
-        cell.setupCell(date, currency)
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: "CurrencyScreenView", bundle: nil).instantiateViewController(withIdentifier: "CurrencyScreenView") as! CurrencyScreenController
-        vc.title = rates[indexPath.row].currency
-        vc.table = selectedTable
-        vc.code = rates[indexPath.row].code!
-        vc.fromDate = date
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    
 }

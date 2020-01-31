@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		893E26F923E3A9B6007A851F /* CurrencyScreenController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E26F823E3A9B6007A851F /* CurrencyScreenController+UITableView.swift */; };
+		893E26FC23E3AA34007A851F /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E26FB23E3AA34007A851F /* ActivityIndicator.swift */; };
+		893E26FE23E3AB95007A851F /* HomeScreenController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 893E26FD23E3AB95007A851F /* HomeScreenController+UITableView.swift */; };
 		8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949836923E1DFCA00D350C4 /* AppDelegate.swift */; };
 		8949836C23E1DFCA00D350C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8949836B23E1DFCA00D350C4 /* SceneDelegate.swift */; };
 		8949837323E1DFCD00D350C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8949837223E1DFCD00D350C4 /* Assets.xcassets */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		893E26F823E3A9B6007A851F /* CurrencyScreenController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyScreenController+UITableView.swift"; sourceTree = "<group>"; };
+		893E26FB23E3AA34007A851F /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		893E26FD23E3AB95007A851F /* HomeScreenController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeScreenController+UITableView.swift"; sourceTree = "<group>"; };
 		8949836623E1DFCA00D350C4 /* ExchangeRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8949836923E1DFCA00D350C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8949836B23E1DFCA00D350C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		893E26FA23E3AA23007A851F /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				893E26FB23E3AA34007A851F /* ActivityIndicator.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		8949835D23E1DFCA00D350C4 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +88,7 @@
 		8949836823E1DFCA00D350C4 /* ExchangeRate */ = {
 			isa = PBXGroup;
 			children = (
+				893E26FA23E3AA23007A851F /* Utility */,
 				8949839123E1FDDE00D350C4 /* Managers */,
 				8949838A23E1EA7800D350C4 /* Models */,
 				8949837E23E1E02700D350C4 /* CurrencyScreen */,
@@ -93,6 +108,7 @@
 				8949838523E1E51B00D350C4 /* CustomCells */,
 				8949838123E1E05800D350C4 /* HomeScreenView.storyboard */,
 				8949838323E1E22B00D350C4 /* HomeScreenController.swift */,
+				893E26FD23E3AB95007A851F /* HomeScreenController+UITableView.swift */,
 			);
 			path = HomeScreen;
 			sourceTree = "<group>";
@@ -103,6 +119,7 @@
 				8949839623E219F400D350C4 /* CustomView */,
 				8949837F23E1E04E00D350C4 /* CurrencyScreenView.storyboard */,
 				8949838F23E1FCDB00D350C4 /* CurrencyScreenController.swift */,
+				893E26F823E3A9B6007A851F /* CurrencyScreenController+UITableView.swift */,
 			);
 			path = CurrencyScreen;
 			sourceTree = "<group>";
@@ -221,9 +238,12 @@
 				8949838C23E1EA8D00D350C4 /* Response.swift in Sources */,
 				8949839A23E21A7A00D350C4 /* DatePickerController.swift in Sources */,
 				8949839023E1FCDB00D350C4 /* CurrencyScreenController.swift in Sources */,
+				893E26FC23E3AA34007A851F /* ActivityIndicator.swift in Sources */,
+				893E26FE23E3AB95007A851F /* HomeScreenController+UITableView.swift in Sources */,
 				8949836A23E1DFCA00D350C4 /* AppDelegate.swift in Sources */,
 				8949839323E1FDEE00D350C4 /* ConnectionManager.swift in Sources */,
 				8949836C23E1DFCA00D350C4 /* SceneDelegate.swift in Sources */,
+				893E26F923E3A9B6007A851F /* CurrencyScreenController+UITableView.swift in Sources */,
 				8949838423E1E22B00D350C4 /* HomeScreenController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

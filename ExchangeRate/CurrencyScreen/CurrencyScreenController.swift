@@ -22,6 +22,7 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     var rates: [Currency] = []
     var changingFrom = false
     var today = ""
+    var activityIndicator: ActivityIndicator?
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
@@ -29,15 +30,14 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
         toDate = fromDate
         fromLabel.text = fromDate
         toLabel.text = fromLabel.text
+        activityIndicator = ActivityIndicator(setupFor: self.view)
         
         fetchData()
     }
     
+    
     @objc func fetchData() {
-        let activityView = UIActivityIndicatorView(style: .large)
-        activityView.center = self.view.center
-        activityView.startAnimating()
-        self.view.addSubview(activityView)
+        activityIndicator!.show()
         let separator = "/"
         let category = "rates"
         let address = category + separator + table + separator + code + separator +
@@ -53,7 +53,7 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
                     self.rates = res.rates
                     self.tableView.reloadData()
                 }
-                self.view.subviews.last?.removeFromSuperview()
+                self.activityIndicator!.hide()
             }
         }
     }
@@ -86,25 +86,4 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
         }
         fetchData()
     }
-}
-
-extension CurrencyScreenController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rates.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ReuseCell")
-        let currency = rates[indexPath.row]
-        if let currency = currency.mid {
-            cell.textLabel?.text = "Average: \(currency)"
-        }
-        if let currency = currency.ask {
-            cell.textLabel?.text = "Average: \(currency)"
-        }
-        cell.detailTextLabel?.text = "Date: " + rates[indexPath.row].effectiveDate!
-        return cell
-    }
-    
-    
 }
