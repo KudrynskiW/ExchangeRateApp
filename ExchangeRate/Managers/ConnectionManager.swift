@@ -13,7 +13,7 @@ class ConnectionManager {
     
     private init() {}
     
-    func download(ext: String, completion: @escaping([Response]?, Error?) -> ()) {
+    func download<T: Decodable>(ext: String, completion: @escaping(_ res: T?,_ err: Error?) -> ()) {
         let url = URL(string: "https://api.nbp.pl/api/exchangerates/" + ext)!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
@@ -21,25 +21,7 @@ class ConnectionManager {
             } else {
                 if let data = data {
                     do {
-                        let resp = try JSONDecoder().decode([Response].self, from: data)
-                        completion(resp, nil)
-                    } catch let JsonError {
-                        completion(nil, JsonError)
-                    }
-                }
-            }
-        }.resume()
-    }
-    
-    func downloadSingle(ext: String, completion: @escaping(Response?, Error?) -> ()) {
-        let url = URL(string: "https://api.nbp.pl/api/exchangerates/" + ext)!
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                completion(nil, error)
-            } else {
-                if let data = data {
-                    do {
-                        let resp = try JSONDecoder().decode(Response.self, from: data)
+                        let resp = try JSONDecoder().decode(T.self, from: data)
                         completion(resp, nil)
                     } catch let JsonError {
                         completion(nil, JsonError)

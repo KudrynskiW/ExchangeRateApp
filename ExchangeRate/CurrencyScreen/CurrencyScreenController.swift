@@ -42,35 +42,36 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
         let category = "rates"
         let address = category + separator + table + separator + code + separator +
         fromDate + separator + toDate + separator
-        ConnectionManager.shared().downloadSingle(ext: address) { (response, error) in
+        ConnectionManager.shared().download(ext: address) { (res: Response?, err) in
             DispatchQueue.main.sync {
-            if let error = error {
+            if let error = err {
                 self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
                 self.tableView.reloadData()
                 print("Error appear: \(error)")
-            }
-                if let response = response {
-                    self.rates = response.rates
+                }
+                if let res = res {
+                    self.rates = res.rates
                     self.tableView.reloadData()
                 }
+                self.view.subviews.last?.removeFromSuperview()
             }
         }
-        self.view.subviews.last?.removeFromSuperview()
+    }
+    
+    func setupPickerView(min: String?, max: String?, starting: String) {
+        let view = DatePickerController.instanceFromNib() as! DatePickerController
+        view.delegate = self
+        view.setup(min: min, max: max, starting: starting)
+        self.view.addSubview(view)
     }
     
     @IBAction func fromButtonTapped(_ sender: Any) {
-        let view = DatePickerController.instanceFromNib() as! DatePickerController
-        view.delegate = self
-        view.setup(min: nil, max: toDate)
-        self.view.addSubview(view)
+        setupPickerView(min: nil, max: toDate, starting: fromDate)
         changingFrom = true
     }
     
     @IBAction func toButtonTapped(_ sender: Any) {
-        let view = DatePickerController.instanceFromNib() as! DatePickerController
-        view.delegate = self
-        view.setup(min: fromDate, max: nil)
-        self.view.addSubview(view)
+        setupPickerView(min: fromDate, max: nil, starting: toDate)
     }
     
     func setDate(date: String) {
@@ -83,7 +84,6 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
             self.toDate = date
             self.toLabel.text = date
         }
-        print(date)
         fetchData()
     }
 }

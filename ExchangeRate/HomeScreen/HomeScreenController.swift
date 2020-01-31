@@ -38,20 +38,23 @@ class HomeScreenController: UIViewController {
         activityView.startAnimating()
         self.view.addSubview(activityView)
         let category = "tables/"
-        ConnectionManager.shared().download(ext: category + selectedTable) { (response, error) in
-            if let error = error {
-                print("Error appear: \(error)")
-            }
+        
+
+        ConnectionManager.shared().download(ext: category + selectedTable) { (res: [Response]?, err) in
             DispatchQueue.main.sync {
-                response?.forEach({ (response) in
+                if let err = err {
+                    print("Error appear: \(err)")
+                }
+                res?.forEach({ (response) in
                     self.rates = response.rates
                     self.date = response.effectiveDate!
                     self.tableView.reloadData()
-                })
+                    })
+                self.view.subviews.last?.removeFromSuperview()
+                }
             }
         }
-        self.view.subviews.last?.removeFromSuperview()
-    }
+        
     
     @IBAction func tableSelected(_ sender: Any) {
         let selectedIndex = segmentedControl.selectedSegmentIndex
