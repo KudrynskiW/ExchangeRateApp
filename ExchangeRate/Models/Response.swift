@@ -9,7 +9,7 @@
 import Foundation
 
 struct Response: Decodable {
-    var table: String
+    var table: String?
     var no: String?
     var code: String?
     var tradingDate: String?

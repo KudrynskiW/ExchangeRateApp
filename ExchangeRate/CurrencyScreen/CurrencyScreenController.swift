@@ -22,6 +22,7 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     var rates: [Currency] = []
     var changingFrom = false
     var today = ""
+    var activityIndicator: ActivityIndicator?
     
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
@@ -29,48 +30,48 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
         toDate = fromDate
         fromLabel.text = fromDate
         toLabel.text = fromLabel.text
+        activityIndicator = ActivityIndicator(setupFor: self.view)
         
         fetchData()
     }
     
+    
     @objc func fetchData() {
-        let activityView = UIActivityIndicatorView(style: .large)
-        activityView.center = self.view.center
-        activityView.startAnimating()
-        self.view.addSubview(activityView)
+        activityIndicator!.show()
         let separator = "/"
         let category = "rates"
         let address = category + separator + table + separator + code + separator +
         fromDate + separator + toDate + separator
-        ConnectionManager.shared().downloadSingle(ext: address) { (response, error) in
+        ConnectionManager.shared().download(ext: address) { (res: Response?, err) in
             DispatchQueue.main.sync {
-            if let error = error {
+            if let error = err {
                 self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
                 self.tableView.reloadData()
                 print("Error appear: \(error)")
-            }
-                if let response = response {
-                    self.rates = response.rates
+                }
+                if let res = res {
+                    self.rates = res.rates
                     self.tableView.reloadData()
                 }
+                self.activityIndicator!.hide()
             }
         }
-        self.view.subviews.last?.removeFromSuperview()
+    }
+    
+    func setupPickerView(min: String?, max: String?, starting: String) {
+        let view = DatePickerController.instanceFromNib() as! DatePickerController
+        view.delegate = self
+        view.setup(min: min, max: max, starting: starting)
+        self.view.addSubview(view)
     }
     
     @IBAction func fromButtonTapped(_ sender: Any) {
-        let view = DatePickerController.instanceFromNib() as! DatePickerController
-        view.delegate = self
-        view.setup(min: nil, max: toDate)
-        self.view.addSubview(view)
+        setupPickerView(min: nil, max: toDate, starting: fromDate)
         changingFrom = true
     }
     
     @IBAction func toButtonTapped(_ sender: Any) {
-        let view = DatePickerController.instanceFromNib() as! DatePickerController
-        view.delegate = self
-        view.setup(min: fromDate, max: nil)
-        self.view.addSubview(view)
+        setupPickerView(min: fromDate, max: nil, starting: toDate)
     }
     
     func setDate(date: String) {
@@ -83,28 +84,6 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
             self.toDate = date
             self.toLabel.text = date
         }
-        print(date)
         fetchData()
     }
-}
-
-extension CurrencyScreenController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        rates.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "ReuseCell")
-        let currency = rates[indexPath.row]
-        if let currency = currency.mid {
-            cell.textLabel?.text = "Average: \(currency)"
-        }
-        if let currency = currency.ask {
-            cell.textLabel?.text = "Average: \(currency)"
-        }
-        cell.detailTextLabel?.text = "Date: " + rates[indexPath.row].effectiveDate!
-        return cell
-    }
-    
-    
 }

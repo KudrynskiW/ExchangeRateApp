@@ -23,27 +23,17 @@ class DatePickerController: UIView {
         return UINib(nibName: "DatePickerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
     }
     
-    func setup(min: String?, max: String?) {
+    func setup(min: String?, max: String?, starting: String) {
         self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
         setDateButton.tintColor = .white
         datePicker.setValue(UIColor.white, forKeyPath: "textColor")
         datePicker.setValue(false, forKeyPath: "highlightsToday")
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        if let min = min {
-            datePicker.minimumDate = dateFormatter.date(from:min)!
-        }
-        if let max = max {
-            datePicker.maximumDate = dateFormatter.date(from:max)!
-        } else {
-            datePicker.maximumDate = Date()
-        }
-        
-         //[...] przy czym pojedyncze zapytanie nie może obejmować przedziału dłuższego, niż 93 dni.
-
+        datePicker.date = dateFormatter.date(from: starting)!
+        datePicker.minimumDate = min != nil ? dateFormatter.date(from:min!)! : nil
+        datePicker.maximumDate = max != nil ? dateFormatter.date(from:max!)! : Date()
     }
-    
-   
     
     @IBAction func setDateButtonClicked(_ sender: Any) {
         let dateFormatter = DateFormatter()
