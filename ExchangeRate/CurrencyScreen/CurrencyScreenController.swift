@@ -37,23 +37,25 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     
     
     @objc func fetchData() {
-        activityIndicator!.show()
-        let separator = "/"
-        let category = "rates"
-        let address = category + separator + table + separator + code + separator +
-        fromDate + separator + toDate + separator
-        ConnectionManager.shared().download(ext: address) { (res: Response?, err) in
-            DispatchQueue.main.sync {
-            if let error = err {
-                self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
-                self.tableView.reloadData()
-                print("Error appear: \(error)")
-                }
-                if let res = res {
-                    self.rates = res.rates
+        if let indicator = activityIndicator {
+            indicator.show()
+            let separator = "/"
+            let category = "rates"
+            let address = category + separator + table + separator + code + separator +
+            fromDate + separator + toDate + separator
+            ConnectionManager.shared().download(ext: address) { (res: Response?, err) in
+                DispatchQueue.main.sync {
+                if let error = err {
+                    self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
                     self.tableView.reloadData()
+                    print("Error appear: \(error)")
+                    }
+                    if let res = res {
+                        self.rates = res.rates
+                        self.tableView.reloadData()
+                    }
+                    indicator.hide()
                 }
-                self.activityIndicator!.hide()
             }
         }
     }
@@ -76,14 +78,15 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     
     func setDate(date: String) {
         self.view.subviews.last?.removeFromSuperview()
-        if(changingFrom) {
-            changingFrom = false
-            self.fromDate = date
-            self.fromLabel.text = date
-        } else {
+        guard changingFrom else {
             self.toDate = date
             self.toLabel.text = date
+            fetchData()
+            return
         }
+        changingFrom = false
+        self.fromDate = date
+        self.fromLabel.text = date
         fetchData()
     }
 }

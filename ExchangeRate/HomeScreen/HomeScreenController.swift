@@ -35,19 +35,21 @@ class HomeScreenController: UIViewController {
     }
     
     @objc func fetchData() {
-        activityIndicator!.show()
-        let category = "tables/"
-        ConnectionManager.shared().download(ext: category + selectedTable) { (res: [Response]?, err) in
-            DispatchQueue.main.sync {
-                if let err = err {
-                    print("Error appear: \(err)")
-                }
-                res?.forEach({ (response) in
-                    self.rates = response.rates
-                    self.date = response.effectiveDate!
-                    self.tableView.reloadData()
-                    })
-                self.activityIndicator!.hide()
+        if let indicator = activityIndicator {
+            indicator.show()
+            let category = "tables/"
+            ConnectionManager.shared().download(ext: category + selectedTable) { (res: [Response]?, err) in
+                DispatchQueue.main.sync {
+                    if let err = err {
+                        print("Error appear: \(err)")
+                    }
+                    res?.forEach({ (response) in
+                        self.rates = response.rates
+                        self.date = response.effectiveDate!
+                        self.tableView.reloadData()
+                        })
+                    indicator.hide()
+                    }
                 }
             }
         }
