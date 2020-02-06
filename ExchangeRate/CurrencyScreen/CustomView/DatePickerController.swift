@@ -17,7 +17,7 @@ class DatePickerController: UIView {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var setDateButton: UIButton!
     
-    var delegate: DatePickerDelegateCustom?
+    weak var delegate: DatePickerDelegateCustom?
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "DatePickerView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
