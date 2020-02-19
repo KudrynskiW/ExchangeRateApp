@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol DatePickerDelegateCustom {
+protocol DatePickerDelegateCustom: class {
     func setDate(date: String)
 }
 

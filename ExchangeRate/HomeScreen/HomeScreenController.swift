@@ -23,9 +23,13 @@ class HomeScreenController: UIViewController {
         super.viewDidLoad()
         self.title = "Currency Monitor"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
+        self.navigationItem.rightBarButtonItem?.tintColor = .white
         
         tableView.register(UINib(nibName: "CurrencyCell", bundle: nil), forCellReuseIdentifier: "CurrencyCell")
-        tableView.rowHeight = 100
+        tableView.rowHeight = 70
+        
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        segmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         tableTypes.forEach { key, value in
             segmentedControl.setTitle(value, forSegmentAt: key)
         }
