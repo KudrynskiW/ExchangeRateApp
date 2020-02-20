@@ -12,13 +12,13 @@ import UIKit
 class CurrencyCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var averageValueLabel: UILabel!
     
     func setupCell(_ date: String,_ currency: Currency) {
+        self.layer.cornerRadius = 10
+        
         self.dateLabel.text = date
-        self.nameLabel.text = currency.currency
-        self.codeLabel.text = currency.code
+        self.nameLabel.text = "\(currency.code ?? "") (\(currency.currency ?? ""))"
         if let currency = currency.mid {
             self.averageValueLabel.text = "\(currency)"
         }
