@@ -27,6 +27,7 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
         
+        
         toDate = fromDate
         fromLabel.text = fromDate
         toLabel.text = fromLabel.text
@@ -38,16 +39,14 @@ class CurrencyScreenController: UIViewController, DatePickerDelegateCustom {
     
     @objc func fetchData() {
         activityIndicator!.show()
-        let separator = "/"
         let category = "rates"
-        let address = category + separator + table + separator + code + separator +
-        fromDate + separator + toDate + separator
+        let addressItems = [category, table, code, fromDate, toDate]
+        let address = addressItems.joined(separator: "/")
         ConnectionManager.shared().download(ext: address) { (res: Response?, err) in
             DispatchQueue.main.sync {
             if let error = err {
-                self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "")]
+                self.rates = [Currency(no: nil, currency: nil, code: nil, bid: nil, ask: nil, mid: 0.0, effectiveDate: "Error loading data: \(error)")]
                 self.tableView.reloadData()
-                print("Error appear: \(error)")
                 }
                 if let res = res {
                     self.rates = res.rates

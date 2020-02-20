@@ -23,7 +23,7 @@ class HomeScreenController: UIViewController {
         super.viewDidLoad()
         self.title = "Currency Monitor"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(fetchData))
-        self.navigationItem.rightBarButtonItem?.tintColor = .white
+        self.navigationController?.navigationBar.tintColor = .white
         
         tableView.register(UINib(nibName: "CurrencyCell", bundle: nil), forCellReuseIdentifier: "CurrencyCell")
         tableView.rowHeight = 70
